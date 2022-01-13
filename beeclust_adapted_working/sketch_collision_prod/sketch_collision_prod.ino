@@ -60,9 +60,9 @@ void loop() {
     Set_LED(1, 10, 10, 50);
     Set_LED(2, 10, 10, 50);
     Motors_stop();
-    if (new_time-old_time > 500 and tried < 5 )
+    if (new_time-old_time > 30 and tried < 150 )
     {
-    for (int i = 1; i <= 8; i++)
+    for (int i = 1; i <= 5; i++)
     {
       Disable_IR(i);  
     }
@@ -75,11 +75,12 @@ void loop() {
     {
       stop_loop=0;
       tried=0;
+      state=1;
     }
     old_time=new_time;
     tried+=1;
     }
-    else if (tried==5)
+    else if (tried==150)
     {
       tried+=1;
       lr_random = random(2); //0: left 1: right
